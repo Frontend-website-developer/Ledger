@@ -2,6 +2,8 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import adminRoutes from "./ledgerRoutes/adminRoutes.js";
 import clientRoutes from "./ledgerRoutes/clientRoutes.js";
+import expenseRoutes from "./ledgerRoutes/expenseRoutes.js";
+import paymentRoutes from "./ledgerRoutes/paymentRoutes.js"
 import express from 'express';
 
 const app = express();
@@ -25,3 +27,7 @@ app.get('/', (req, res) => {
 app.use("/api/admin", adminRoutes);
 
 app.use("/api/client", clientRoutes);
+
+app.use("/api/expense", expenseRoutes);
+
+app.use("/api/payment", paymentRoutes);

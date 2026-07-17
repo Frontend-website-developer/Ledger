@@ -1,5 +1,7 @@
 import bcrypt from "bcrypt";
 import Client from "../ledgerModels/client.js";
+import Expense from "../ledgerModels/expense.js";
+import Payment from "../ledgerModels/payment.js";
 import jwt from "jsonwebtoken";
 
 const clientRegister = async(req, res) => {
@@ -31,5 +33,27 @@ const getClientProfile = async(req, res) => {
     res.json(client);
 }
 
-export {clientRegister, clientLogin, getClientProfile}
+const calculateBalance = async (clientId) => {
+    const expenses = await Expense.find({client: clientId});
+    const totalExpense = expenses.reduce((sum, e) => sum + e.amount, 0);
+
+    const payments = await Payment.find({client: clientId, status: "approved"});
+    const totalPaid = payments.reduce((sum, p) => sum + p.amount, 0);
+
+    return {totalExpense, totalPaid, balance: totalExpense - totalPaid};
+};
+
+
+const getMyBalance = async (req, res) => {
+    const balance = await calculateBalance(req.clientId);
+    res.json(balance);
+}
+
+const getClientBalance = async (req, res) => {
+    const {clientId} = req.params;
+    const balance = await calculateBalance(clientId);
+    res.json(balance)
+}
+
+export {clientRegister, clientLogin, getClientProfile, getMyBalance, getClientBalance}
 
