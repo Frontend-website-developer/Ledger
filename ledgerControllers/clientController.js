@@ -28,6 +28,11 @@ const clientLogin = async(req, res) => {
     res.json({token})
 }
 
+const getAllClients = async(req, res) => {
+    const clientList = await Client.find().select("-password");
+    res.json(clientList);
+}
+
 const getClientProfile = async(req, res) => {
     const client = await Client.findById(req.clientId).select("-password");
     res.json(client);
@@ -55,5 +60,5 @@ const getClientBalance = async (req, res) => {
     res.json(balance)
 }
 
-export {clientRegister, clientLogin, getClientProfile, getMyBalance, getClientBalance}
+export {clientRegister, clientLogin, getAllClients, getClientProfile, getMyBalance, getClientBalance}
 
