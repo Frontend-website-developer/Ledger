@@ -4,13 +4,18 @@ import adminRoutes from "./ledgerRoutes/adminRoutes.js";
 import clientRoutes from "./ledgerRoutes/clientRoutes.js";
 import expenseRoutes from "./ledgerRoutes/expenseRoutes.js";
 import paymentRoutes from "./ledgerRoutes/paymentRoutes.js"
+import authRoutes from "./ledgerRoutes/authRoutes.js"
 import express from 'express';
+import cors from "cors";
+
 
 const app = express();
 
 const PORT = 5001;
 
 app.use(express.json());
+app.use(cors());
+
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB connected"))
@@ -31,3 +36,5 @@ app.use("/api/client", clientRoutes);
 app.use("/api/expense", expenseRoutes);
 
 app.use("/api/payment", paymentRoutes);
+
+app.use("/api/auth", authRoutes);
