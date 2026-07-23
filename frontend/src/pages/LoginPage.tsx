@@ -4,7 +4,8 @@ import { login } from "../authSlice";
 import { useNavigate } from "react-router-dom";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { CiMail } from "react-icons/ci";
-
+import { Link } from "react-router-dom";
+import heroImage from "../assets/login-ledger-image.jpg"
 
 
 
@@ -35,10 +36,10 @@ function Login() {
         <>
         <div className="flex">
             <div className="bg-[#00bcff] w-1/2 h-screen">
-
+                <img src={heroImage} alt="Ledger" />
             </div>
-            <div className="w-1/2 px-[50px]">
-                <div className="">
+            <div className="w-1/2 px-[50px] flex align-center">
+                <div className="m-auto">
                     <div className="bg-[#f0f0fe] p-[5px] w-[50px] h-[50px] rounded-sm p-[10px] text-center mx-auto my-[20px]">
                         <RiLockPasswordFill className="text-[#3e48f1] text-[30px]"/>
                     </div>
@@ -48,16 +49,19 @@ function Login() {
                     <form onSubmit={handleSubmit}>
                         <div className="my-[10px]">
                             <label className="text-left text-[12px] font-semibold">Email Address</label>
-                            <input className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full" type="email" placeholder="enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full text-[12px]" type="email" placeholder="enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <div className="my-[10px]">
                             <label className="text-left text-[12px] font-semibold">Password</label>
-                            <input className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full" type="password" placeholder="enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full text-[12px]" type="password" placeholder="enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
                         </div>
-                        <div>    
+                        <div className="mt-[30px]">    
                             <button type="submit" className="bg-[#3d49f1] rounded-sm w-full text-[#fff] p-[10px] cursor-pointer">Sign In</button>
                         </div>
                     </form>
+                    <p className="text-[12px]">
+    Don't have an account? <Link to="/register">Sign up now</Link>
+</p>
                 </div>
             </div>
         </div>
