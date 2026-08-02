@@ -12,7 +12,7 @@ export type Expense = {
         _id: string;
         description: string;
         amount: number;
-        
+        createdAt: string;
     }
 export type Payment = {
         _id: string;

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import heroImage from "../assets/login-ledger-image.jpg";
-import { Navigate } from "react-router-dom";
 import { API_URL } from "../config";
 function Register() {
 

@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { login } from "../authSlice";
 import { useNavigate } from "react-router-dom";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { CiMail } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import heroImage from "../assets/login-ledger-image.jpg";
 import {API_URL} from "../config";
