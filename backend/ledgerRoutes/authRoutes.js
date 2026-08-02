@@ -1,8 +1,12 @@
 import express from "express";
-import { login } from "../ledgerControllers/authController.js";
+import { login, forgotPassword, resetPassword } from "../ledgerControllers/authController.js";
 
 const router = express.Router();
 
 router.post("/login", login);
+
+router.post("/forgot-password", forgotPassword);
+
+router.post("/reset-password/:token", resetPassword);
 
 export default router;

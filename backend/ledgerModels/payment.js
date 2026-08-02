@@ -21,7 +21,8 @@ const paymentSchema = new mongoose.Schema({
         enum: ["pending", "approved", "rejected"],
         default: "pending"
     }
-});
+},
+{timestamps: true});
 
 const Payment = mongoose.model("Payment", paymentSchema);
 

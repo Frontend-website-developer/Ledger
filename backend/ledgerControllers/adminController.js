@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import Admin from "../ledgerModels/admin.js";
 import jwt from "jsonwebtoken";
+import protect from "../ledgerMiddleware/authMiddleware.js";
 
 const registerAdmin = async(req, res) => {
     const {name, email, phone, password} = req.body;
@@ -30,4 +31,12 @@ const getAdminProfile = async (req, res) => {
     res.json(admin);
 };
 
-export { registerAdmin, loginAdmin, getAdminProfile };
+const requireAuthIfAdminExists = async (req, res, next) => {
+    const adminCount = await Admin.countDocuments();
+    if (adminCount === 0){
+        return next();
+    }
+    return protect (req, res, next);
+}
+
+export { registerAdmin, loginAdmin, getAdminProfile, requireAuthIfAdminExists };

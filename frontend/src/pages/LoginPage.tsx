@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { CiMail } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import heroImage from "../assets/login-ledger-image.jpg"
+import heroImage from "../assets/login-ledger-image.jpg";
+import {API_URL} from "../config";
 
 
 
@@ -17,7 +18,7 @@ function Login() {
     async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:5001/api/auth/login", {
+    const response = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -61,6 +62,9 @@ function Login() {
                     </form>
                     <p className="text-[12px]">
     Don't have an account? <Link to="/register">Sign up now</Link>
+</p>
+                    <p className="text-[12px]">
+    <Link to="/forgot-password">Forgot password?</Link>
 </p>
                 </div>
             </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import heroImage from "../assets/login-ledger-image.jpg";
 import { Navigate } from "react-router-dom";
+import { API_URL } from "../config";
 function Register() {
 
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ function Register() {
     async function handleSubmit(e: React.FormEvent){
         e.preventDefault();
 
-        const response = await fetch("http://localhost:5001/api/client/register", {
+        const response = await fetch(`${API_URL}/api/client/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

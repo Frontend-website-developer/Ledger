@@ -12,7 +12,7 @@ const getClientPayments = async(req, res) => {
 }
 
 const getPendingPayments = async(req, res) => {
-    const payments = await Payment.find({status: "pending"});
+    const payments = await Payment.find({status: "pending"}).populate("client", "name");
     res.json(payments);
 }
 
@@ -23,4 +23,16 @@ const updatePaymentStatus = async(req, res) => {
     res.json(payment);
 }
 
-export {createPayment, getClientPayments, getPendingPayments, updatePaymentStatus}
+const getClientPaymentsById = async (req, res) => {
+    const {clientId} = req.params;
+    const payments = await Payment.find({client: clientId});
+    res.json(payments);
+}
+
+const createAdminPayment = async(req, res) => {
+    const {amount, description, client} = req.body;
+    const payment = await Payment.create({amount, description, client, status: "approved"});
+    res.json(payment);
+}
+
+export {createPayment, getClientPayments, getPendingPayments, updatePaymentStatus, getClientPaymentsById, createAdminPayment}

@@ -1,4 +1,5 @@
 import "dotenv/config";
+import dns from "dns";
 import mongoose from "mongoose";
 import adminRoutes from "./ledgerRoutes/adminRoutes.js";
 import clientRoutes from "./ledgerRoutes/clientRoutes.js";
@@ -16,7 +17,7 @@ const PORT = 5001;
 app.use(express.json());
 app.use(cors());
 
-
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB connected"))
     .catch((err) => console.error("MongoDB connection error:", err));

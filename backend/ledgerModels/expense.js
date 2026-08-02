@@ -14,7 +14,7 @@ const expenseSchema = mongoose.Schema({
         required: true
     }
 
-});
+}, {timestamps: true});
 
 const clientExpense = mongoose.model("clientExpense", expenseSchema);
 
