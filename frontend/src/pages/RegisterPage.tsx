@@ -47,11 +47,11 @@ function Register() {
                     <form onSubmit={handleSubmit}>
                         <div className="my-[10px]">
                             <label className="text-left text-[12px] font-semibold">Name</label>
-                            <input className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full text-[12px]" type="text" placeholder="enter your name" value={name} onChange={(e) => setName(e.target.value)} />
+                            <input required className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full text-[12px]" type="text" placeholder="enter your name" value={name} onChange={(e) => setName(e.target.value)} />
                         </div>
                         <div className="my-[10px]">
                             <label className="text-left text-[12px] font-semibold">Email Address</label>
-                            <input className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full text-[12px]" type="email" placeholder="enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input required className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full text-[12px]" type="email" placeholder="enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <div className="my-[10px]">
                             <label className="text-left text-[12px] font-semibold">Password</label>
@@ -59,15 +59,15 @@ function Register() {
                         </div>
                         <div className="my-[10px]">
                             <label className="text-left text-[12px] font-semibold">Phone</label>
-                            <input className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full text-[12px]" type="tel" placeholder="enter phone number" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                            <input required className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full text-[12px]" type="tel" placeholder="enter phone number" value={phone} onChange={(e) => setPhone(e.target.value)} />
                         </div>
                         <div className="my-[10px]">
                             <label className="text-left text-[12px] font-semibold">Country</label>
-                            <input className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full text-[12px]" type="text" placeholder="enter country name" value={country} onChange={(e) => setCountry(e.target.value)} />
+                            <input required className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full text-[12px]" type="text" placeholder="enter country name" value={country} onChange={(e) => setCountry(e.target.value)} />
                         </div>
                         <div className="my-[10px]">
                             <label className="text-left text-[12px] font-semibold">City</label>
-                            <input className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full text-[12px]" type="text" placeholder="enter city" value={city} onChange={(e) => setCity(e.target.value)} />
+                            <input required className="bg-[#f2f2f2] border border-[#eee] rounded-sm p-[10px] w-full text-[12px]" type="text" placeholder="enter city" value={city} onChange={(e) => setCity(e.target.value)} />
                         </div>
                         <div className="my-[10px]">
                             <label className="text-left text-[12px] font-semibold">Address</label>
