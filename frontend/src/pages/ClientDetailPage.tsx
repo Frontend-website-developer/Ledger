@@ -106,7 +106,7 @@ function ClientSingle() {
         <Modal isOpen={showExpenseModal} onClose={() => setshowExpenseModal(false)}>
             <h3>Add Expense</h3>
             <form onSubmit={handleAddExpense}>
-                <input value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} placeholder="Amount" />
+                <input required value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} placeholder="Amount" />
                 <input value={expenseDescription} onChange={(e) => setExpenseDescription(e.target.value)} placeholder="Description" />
                 <button type="submit">Add Expense</button>
             </form>
@@ -115,7 +115,7 @@ function ClientSingle() {
         <Modal isOpen={showPaymentModal} onClose={() => setshowPaymentModal(false)}>
             <h3>Add Payment</h3>
             <form onSubmit={handleAddPayment}>
-                <input value={paymentAmount} onChange={(e) => setPaymentAmount(e.target.value)} placeholder="Amount" />
+                <input required value={paymentAmount} onChange={(e) => setPaymentAmount(e.target.value)} placeholder="Amount" />
                 <input value={paymentDescription} onChange={(e) => setPaymentDescription(e.target.value)} placeholder="Description" />
                 <button type="submit">Add Payment</button>
             </form>

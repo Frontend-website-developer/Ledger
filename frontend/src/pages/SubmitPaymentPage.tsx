@@ -36,7 +36,7 @@ function PaymentSubmit({onPaymentSubmitted}: PaymentSubmitProps) {
         <form className="flex items-end" onSubmit={handleSubmit}>
             <div>
                 <label className="block text-[14px] text-[#000]">Amount</label>
-                <input className="px-2 border border-[#e2e8f0] mr-2 text-[12px] rouded-md bg-[#f8fafc]" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount"/>
+                <input required className="px-2 border border-[#e2e8f0] mr-2 text-[12px] rouded-md bg-[#f8fafc]" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount"/>
             </div>
             <div>
                 <label className="block text-[14px] text-[#000]">Description</label>
