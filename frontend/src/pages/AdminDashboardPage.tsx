@@ -38,8 +38,9 @@ function AdminDashboard() {
     return (
         <div className="px-5">
         <h1>Welcome {profile?.name}</h1>
-
-
+{clientList.length > 0 ? 
+(
+    <>
         <h2>Client List</h2>
         <div className="border border-gray-300 w-[100%] rounded-md overflow-x-auto">
                 <table className="w-full min-w-[700px] bg-[#fff]">
@@ -73,6 +74,16 @@ function AdminDashboard() {
         </tbody>
         </table>
         </div>
+    </>    
+)
+        : 
+        (
+            <h2>No client found</h2>
+        )
+
+}
+
+
         </div>
     )
 }
