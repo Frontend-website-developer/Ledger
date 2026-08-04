@@ -49,10 +49,10 @@ async function handleSubmit(e: React.FormEvent) {
     return (
         <>
         <div className="flex">
-            <div className="bg-[#00bcff] w-1/2 h-screen">
+            <div className="hidden md:block bg-[#00bcff] w-1/2 h-screen">
                 <img src={heroImage} alt="Ledger" />
             </div>
-            <div className="w-1/2 px-[50px] flex align-center">
+            <div className="w-full md:w-1/2 px-[20px] md:px-[50px] flex align-center">
                 <div className="m-auto">
                     <div className="bg-[#f0f0fe] p-[5px] w-[50px] h-[50px] rounded-sm p-[10px] text-center mx-auto my-[20px]">
                         <RiLockPasswordFill className="text-[#3e48f1] text-[30px]"/>

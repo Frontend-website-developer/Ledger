@@ -9,8 +9,8 @@ function ExpenseList({expenses}: ExpenseListProps){
     return(
         <div>
             <h3 className="text-[22px] font-semibold text-[#000] mb-2">Expense Breakdown</h3>
-            <div className="border border-gray-300 w-[100%] rounded-md">
-                <table className="w-[100%]">
+            <div className="border border-gray-300 w-[100%] rounded-md overflow-x-auto">
+                <table className="w-full min-w-[400px]">
                     <thead className="text-left bg-[#f1f5f9]">
                         <tr>
                             <th className="p-2">Date</th>

@@ -41,8 +41,8 @@ function AdminDashboard() {
 
 
         <h2>Client List</h2>
-        <div className="border border-gray-300 w-[100%] rounded-md">
-                <table className="w-[100%] bg-[#fff]">
+        <div className="border border-gray-300 w-[100%] rounded-md overflow-x-auto">
+                <table className="w-full min-w-[700px] bg-[#fff]">
             <thead className="text-left bg-[#f1f5f9]">
                 <tr className="text-left text-[14px]">
                     <th className="border border-gray-300 p-2">Name</th>

@@ -33,17 +33,17 @@ function PaymentSubmit({onPaymentSubmitted}: PaymentSubmitProps) {
             <>
         <h2 className="text-[22px]">Submit Payment</h2>
 <div className="p-5 my-5 bg-[#fff] border border-[#e2e8f0] rounded-md">
-        <form className="flex items-end" onSubmit={handleSubmit}>
+        <form className="flex flex-col md:flex-row md:items-end gap-3 md:gap-0" onSubmit={handleSubmit}>
             <div>
                 <label className="block text-[14px] text-[#000]">Amount</label>
-                <input required className="px-2 border border-[#e2e8f0] mr-2 text-[12px] rouded-md bg-[#f8fafc]" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount"/>
+                <input required className="px-2 border border-[#e2e8f0] md:mr-2 w-full text-[12px] rouded-md bg-[#f8fafc]" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount"/>
             </div>
             <div>
                 <label className="block text-[14px] text-[#000]">Description</label>
-                <input className="px-2 border border-[#e2e8f0] mr-2 text-[12px] rouded-md bg-[#f8fafc]" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
+                <input className="px-2 border border-[#e2e8f0] md:mr-2 w-full text-[12px] rouded-md bg-[#f8fafc]" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
             </div>
             <div>
-                <button className="bg-[green] text-[#fff] px-2 text-[14px] inline-block rouded-md" type="submit">Submit Payment</button>
+                <button className="bg-[green] text-[#fff] px-2 py-2 md:py-0 w-full md:w-auto text-[14px] inline-block rouded-md" type="submit">Submit Payment</button>
             </div>
         </form>
         </div>

@@ -42,8 +42,8 @@ function PendingPayments() {
             <h1>Pending Payments</h1>
             {
             payment.length > 0 ? (
-                <div className="border border-gray-300 w-[100%] rounded-md">
-                    <table className="w-[100%] bg-[#fff] text-[14px]">
+                <div className="border border-gray-300 w-[100%] rounded-md overflow-x-auto">
+                    <table className="w-full min-w-[700px] bg-[#fff] text-[14px]">
                         <thead className="text-left bg-[#f1f5f9]">
                     <tr>
                         <th className="p-2">Date</th>
