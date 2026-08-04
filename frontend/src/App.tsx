@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import ClientSingle from './pages/ClientDetailPage'
 import Login from './pages/LoginPage'
 import PendingPayments from './pages/PendingPaymentsPage'
@@ -13,6 +13,13 @@ import ProtectedRoute from './components/ProtectedRoute'
 import NavBar from './components/Navbar';
 import logo from "../src/assets/logo.png";
 import { useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import type { RootState } from './store'
+
+function RootRedirect() {
+  const token = useSelector((state: RootState) => state.auth.token);
+  return <Navigate to={token ? "/dashboard" : "/login"} replace />;
+}
 
 function App() {
   const location = useLocation();
@@ -26,6 +33,7 @@ function App() {
         </div> }
         <div className={`w-[100%] ${showNav ? "ml-[240px]" : ""} flex-[1]`}>
           <Routes>
+              <Route path="/" element={<RootRedirect />} />
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <DashboardRouter />
