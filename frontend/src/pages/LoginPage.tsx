@@ -14,21 +14,35 @@ function Login() {
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    async function handleSubmit(e: React.FormEvent) {
+async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const response = await fetch(`${API_URL}/api/auth/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-    });
+    try {
+        const response = await fetch(`${API_URL}/api/auth/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+        });
 
-    const data = await response.json();
-    console.log(data);
-    dispatch(login({token: data.token, role: data.role}))
-    navigate("/dashboard");
+        const data = await response.json();
+
+        if (!response.ok) {
+            alert(data.message || "Login failed. Please try again.");
+            return;
+        }
+
+        if (!data.token || !data.role) {
+            alert("Invalid response from server");
+            return;
+        }
+
+        dispatch(login({ token: data.token, role: data.role }));
+        navigate("/dashboard");
+    } catch (err) {
+        alert("Network error. Please try again.");
+    }
 }
 
 

@@ -13,7 +13,7 @@ const login = async (req, res) => {
         if (!isMatch) {
             return res.status(401).json({ message: "Invalid password" });
         }
-        const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+        const token = jwt.sign({ id: admin._id, role: "admin" }, process.env.JWT_SECRET, { expiresIn: "1d" });
         return res.json({ token, role: "admin" });
     }
 
@@ -23,7 +23,7 @@ const login = async (req, res) => {
         if (!isMatch) {
             return res.status(401).json({ message: "Invalid password" });
         }
-        const token = jwt.sign({ id: client._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+        const token = jwt.sign({ id: client._id, role: "client" }, process.env.JWT_SECRET, { expiresIn: "1d" });
         return res.json({ token, role: "client" });
     }
 
@@ -31,35 +31,37 @@ const login = async (req, res) => {
 };
 
 const forgotPassword = async (req, res) => {
-    const {email} = req.body;
-    const admin = await Admin.findOne({email});
-    if(admin){
-    const rawToken = crypto.randomBytes(32).toString("hex");
-    const hashedToken = crypto.createHash("sha256").update(rawToken).digest("hex");
+    const { email } = req.body;
+    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
 
-    admin.resetPasswordToken = hashedToken;
-    admin.resetPasswordExpires = Date.now() + 15 * 60 * 1000;
-    await admin.save();
+    const admin = await Admin.findOne({ email });
+    if (admin) {
+        const rawToken = crypto.randomBytes(32).toString("hex");
+        const hashedToken = crypto.createHash("sha256").update(rawToken).digest("hex");
 
-    console.log(`Reset link: http://localhost:5173/reset-password/${rawToken}`);
+        admin.resetPasswordToken = hashedToken;
+        admin.resetPasswordExpires = Date.now() + 15 * 60 * 1000;
+        await admin.save();
+
+        console.log(`Reset link: ${frontendUrl}/reset-password/${rawToken}`);
+        return res.json({ message: "Reset link sent" });
+    }
+
+    const client = await Client.findOne({ email });
+    if (client) {
+        const rawToken = crypto.randomBytes(32).toString("hex");
+        const hashedToken = crypto.createHash("sha256").update(rawToken).digest("hex");
+
+        client.resetPasswordToken = hashedToken;
+        client.resetPasswordExpires = Date.now() + 15 * 60 * 1000;
+        await client.save();
+
+        console.log(`Reset link: ${frontendUrl}/reset-password/${rawToken}`);
+        return res.json({ message: "Reset link sent" });
+    }
+
     return res.json({ message: "Reset link sent" });
-}
-
-const client = await Client.findOne({email});
-if(client){
-    const rawToken = crypto.randomBytes(32).toString("hex");
-    const hashedToken = crypto.createHash("sha256").update(rawToken).digest("hex");
-
-    client.resetPasswordToken = hashedToken;  
-    client.resetPasswordExpires = Date.now() + 15 * 60 * 1000; 
-    await client.save();                
-
-    console.log(`Reset link: http://localhost:5173/reset-password/${rawToken}`);
-    return res.json({ message: "Reset link sent" });
-}
-
-return res.json({ message: "Reset link sent" });
-}
+};
 
 const resetPassword = async (req, res) => {
     const { token } = req.params;

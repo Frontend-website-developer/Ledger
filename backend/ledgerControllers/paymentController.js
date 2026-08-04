@@ -1,7 +1,11 @@
 import Payment from "../ledgerModels/payment.js";
 
 const createPayment = async(req, res) => {
+    
     const {amount, description} = req.body;
+    if (typeof amount !== "number" || amount <= 0) {
+    return res.status(400).json({ message: "Amount must be a positive number" });
+}
     const payment = await Payment.create({amount, description, client: req.clientId});
     res.json(payment);
 }
@@ -31,6 +35,9 @@ const getClientPaymentsById = async (req, res) => {
 
 const createAdminPayment = async(req, res) => {
     const {amount, description, client} = req.body;
+    if (typeof amount !== "number" || amount <= 0) {
+    return res.status(400).json({ message: "Amount must be a positive number" });
+}
     const payment = await Payment.create({amount, description, client, status: "approved"});
     res.json(payment);
 }
