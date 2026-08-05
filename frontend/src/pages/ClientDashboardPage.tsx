@@ -29,6 +29,7 @@ function ClientDashboard() {
                     setBalance(data);
                 }
                 async function fetchExpense(clientId: string){
+                    try{
                     const response = await fetch(`${API_URL}/api/expense/client/${clientId}`, {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -36,6 +37,10 @@ function ClientDashboard() {
                     });
                         const data = await response.json();
                         setExpense(data);
+                        }
+                        catch(error){
+                            console.log("this is the error:", error);
+                        }
                 }
 
                 

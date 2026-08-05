@@ -11,11 +11,6 @@ const protect = (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-        if (decoded.role !== "admin") {
-            return res.status(403).json({ message: "Admin access required" });
-        }
-
         req.adminId = decoded.id;
         next();
     } catch (err) {

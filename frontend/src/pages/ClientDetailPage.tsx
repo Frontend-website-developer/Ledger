@@ -100,15 +100,14 @@ function ClientSingle() {
 
     return (
         <>
-        <button onClick={() => setshowExpenseModal(true)}>Add Expense</button>
-        <button onClick={() => setshowPaymentModal(true)}>Add Payment</button>
+        
 
         <Modal isOpen={showExpenseModal} onClose={() => setshowExpenseModal(false)}>
-            <h3>Add Expense</h3>
+            <h3 className="">Add Expense</h3>
             <form onSubmit={handleAddExpense}>
-                <input required value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} placeholder="Amount" />
-                <input value={expenseDescription} onChange={(e) => setExpenseDescription(e.target.value)} placeholder="Description" />
-                <button type="submit">Add Expense</button>
+                <input className="border rounded-sm p-2 block my-2" required value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} placeholder="Amount" />
+                <input className="border rounded-sm p-2 block my-2" value={expenseDescription} onChange={(e) => setExpenseDescription(e.target.value)} placeholder="Description" />
+                <button className="bg-red-500 text-[#fff] text-[14px] px-2 rounded-sm" type="submit">Add Expense</button>
             </form>
         </Modal>
 
@@ -122,7 +121,15 @@ function ClientSingle() {
         </Modal>
 
         <div className="px-5">
-            <h1>{clientProfile?.name}</h1>
+            <div className="flex justify-between items-center">
+                <div className="">
+                    <h1>{clientProfile?.name}</h1>
+                </div>
+                <div className="">
+                    <button className="bg-red-500 text-[#fff] px-2 text-[12px] rounded-sm mr-[10px]" onClick={() => setshowExpenseModal(true)}>Add Expense</button>
+                    <button className="bg-green-500 text-[#fff] px-2 text-[12px] rounded-sm" onClick={() => setshowPaymentModal(true)}>Add Payment</button>
+                </div>
+            </div>
             <div>
                 <div className="text-[14px] my-4">
                     <PaymentList payments={payment} />
