@@ -11,6 +11,7 @@ function AdminDashboard() {
     });
     const [profile, setProfile] = useState<Profile | null>(null);
     const [clientList, setClientList] = useState<Client[]>([]);
+    const [loading, setLoading] = useState(true);
     useEffect(
         () => {
         async function fetchProfile() {
@@ -31,6 +32,7 @@ function AdminDashboard() {
 
             const data = await response.json();
             setClientList(data);
+            setLoading(false);
         }
         fetchProfile();
         fetchClientList();
@@ -38,7 +40,9 @@ function AdminDashboard() {
     return (
         <div className="px-5">
         <h1>Welcome {profile?.name}</h1>
-{clientList.length > 0 ? 
+{loading ? (
+    <p>Loading clients...</p>
+) : clientList.length > 0 ?
 (
     <>
         <h2>Client List</h2>
