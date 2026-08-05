@@ -103,20 +103,20 @@ function ClientSingle() {
         
 
         <Modal isOpen={showExpenseModal} onClose={() => setshowExpenseModal(false)}>
-            <h3 className="">Add Expense</h3>
+            <h3 className="text-600">Add Expense</h3>
             <form onSubmit={handleAddExpense}>
-                <input className="border rounded-sm p-2 block my-2" required value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} placeholder="Amount" />
-                <input className="border rounded-sm p-2 block my-2" value={expenseDescription} onChange={(e) => setExpenseDescription(e.target.value)} placeholder="Description" />
-                <button className="bg-red-500 text-[#fff] text-[14px] px-2 rounded-sm" type="submit">Add Expense</button>
+                <input className="border rounded-sm px-2 py-1 block my-2 w-[100%] text-[12px]" required value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} placeholder="Amount" />
+                <input className="border rounded-sm px-2 py-1 block my-2 w-[100%] text-[12px]" value={expenseDescription} onChange={(e) => setExpenseDescription(e.target.value)} placeholder="Description" />
+                <button className="bg-red-500 text-[#fff] text-[14px] px-3 py-1 rounded-sm cursor-pointer" type="submit text-[14px]">Add Expense</button>
             </form>
         </Modal>
 
         <Modal isOpen={showPaymentModal} onClose={() => setshowPaymentModal(false)}>
             <h3>Add Payment</h3>
             <form onSubmit={handleAddPayment}>
-                <input required value={paymentAmount} onChange={(e) => setPaymentAmount(e.target.value)} placeholder="Amount" />
-                <input value={paymentDescription} onChange={(e) => setPaymentDescription(e.target.value)} placeholder="Description" />
-                <button type="submit">Add Payment</button>
+                <input className="border rounded-sm px-2 py-1 block my-2 w-[100%] text-[12px]" required value={paymentAmount} onChange={(e) => setPaymentAmount(e.target.value)} placeholder="Amount" />
+                <input className="border rounded-sm px-2 py-1 block my-2 w-[100%] text-[12px]" value={paymentDescription} onChange={(e) => setPaymentDescription(e.target.value)} placeholder="Description" />
+                <button className="bg-green-500 text-[#fff] text-[14px] px-3 py-1 rounded-sm cursor-pointer" type="submit">Add Payment</button>
             </form>
         </Modal>
 
