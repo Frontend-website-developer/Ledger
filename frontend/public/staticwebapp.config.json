@@ -2,5 +2,14 @@
     "navigationFallback": {
         "rewrite": "/index.html",
         "exclude": ["/assets/*", "/*.{css,js,ico,png,jpg,jpeg,svg,gif,webp,woff,woff2,ttf,eot,json}"]
-    }
+    },
+    "mimeTypes": {
+    ".json": "application/json",
+    ".js": "text/javascript",
+    ".mjs": "text/javascript",
+    ".css": "text/css"
+  },
+  "globalHeaders": {
+    "cache-control": "no-store"
+  }
 }
