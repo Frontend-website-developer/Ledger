@@ -7,7 +7,7 @@
     ".json": "application/json",
     ".js": "text/javascript",
     ".mjs": "text/javascript",
-    ".css": "text/css",
+    ".css": "text/css"
   },
   "globalHeaders": {
     "cache-control": "no-store"
