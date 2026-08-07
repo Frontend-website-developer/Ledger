@@ -107,7 +107,7 @@ function ClientSingle() {
             <form onSubmit={handleAddExpense}>
                 <input className="border rounded-sm px-2 py-1 block my-2 w-[100%] text-[12px]" required value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} placeholder="Amount" />
                 <input className="border rounded-sm px-2 py-1 block my-2 w-[100%] text-[12px]" value={expenseDescription} onChange={(e) => setExpenseDescription(e.target.value)} placeholder="Description" />
-                <button className="bg-red-500 text-[#fff] text-[14px] px-3 py-1 rounded-sm cursor-pointer" type="submit text-[14px]">Add Expense</button>
+                <button className="bg-red-500 text-[#fff] text-[14px] px-3 py-1 rounded-sm cursor-pointer text-[14px]" type="submit">Add Expense</button>
             </form>
         </Modal>
 
